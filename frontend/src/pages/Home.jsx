@@ -23,7 +23,7 @@ export default function Home() {
 
   const fetchProducts = async () => {
     try {
-      const url = "http://localhost:8080/prodcuts";
+      const url = "https://mern-auth-2-api-three.vercel.app/products";
       const headers = {
         headers: {
           Authorization: `${localStorage.getItem("token")}`,
