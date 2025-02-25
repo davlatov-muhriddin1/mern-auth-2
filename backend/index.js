@@ -11,12 +11,16 @@ require("./Models/db");
 
 const PORT = process.env.PORT || 8080;
 
-app.get("/pig", (req, res) => {
-  res.send("Pong");
-});
-
 app.use(bodyParser.json());
-app.use(cors());
+app.use((req, res, next) => {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://mern-auth-2-liart.vercel.app"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 
 app.use("/auth", AuthRouter);
 app.use("/products", ProductRouter);
